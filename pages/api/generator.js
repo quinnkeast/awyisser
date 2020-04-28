@@ -93,7 +93,7 @@ export default (req, res) => {
 		}
 
 		// Fetch the base image
-		const url = `http://localhost:3000/${baseImage}`;
+		const url = `${process.env.VERCEL_URL || 'http://localhost:3000'}/${baseImage}`;
 		http.get(url)
 			.on('response', (response) => {
 				const { statusCode } = response;
