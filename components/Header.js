@@ -1,4 +1,3 @@
-import { NextLink as Link } from 'next/Link';
 import styled from 'styled-components';
 import { breakpoints } from '../styles/tokens';
 
@@ -41,9 +40,7 @@ const Lead = styled.h2`
 
 const Header = () => (
 	<HeaderContainer>
-		<Link href="/" passHref>
-			<Logo>Awyisser</Logo>
-		</Link>
+		<Logo>Awyisser</Logo>
 		<Lead>Create your very own, extra special "aw yiss" comic</Lead>
 	</HeaderContainer>
 );
