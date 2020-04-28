@@ -1,15 +1,21 @@
 import styled from 'styled-components';
+import { breakpoints } from '../styles/tokens';
 
 const FooterContainer = styled.footer`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 3rem 0;
+	padding: 1rem .5rem;
+
+	@media (min-width: ${breakpoints.tabletPortrait}) {
+	  padding: 3rem 0;
+	}
 
 	p {
 		font-size: .95rem;
 		text-transform: lowercase;
 		margin: 0;
+		text-align: center;
 	}
 `;
 

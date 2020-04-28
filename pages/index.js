@@ -3,10 +3,15 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Form from '../components/Form';
+import { breakpoints } from '../styles/tokens';
 
 const Main = styled.main`
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
+
+  @media (min-width: ${breakpoints.tabletPortrait}) {
+    max-width: 1200px;
+  }
 `;
 
 export default function Home() {
@@ -15,6 +20,7 @@ export default function Home() {
       <Head>
         <title>awyisser | aw yiss comic generator</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
       <Main>

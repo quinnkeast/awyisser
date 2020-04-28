@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import Filter from 'bad-words';
 import { badWords } from './badWords.json';
+import { breakpoints } from '../styles/tokens';
 
 const Container = styled.div`
 	display: flex;
@@ -15,26 +16,43 @@ const FormContainer = styled.form`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	max-width: 870px;
-	padding: 3rem 0;
+	max-width: 100%;
+	padding: 1.5rem 0;
+
+	@media (min-width: ${breakpoints.tabletPortrait}) {
+	  max-width: 870px;
+	  padding: 3rem 0;
+	}
 `;
 
 const TextInput = styled.input`
 	border: none;
-	font-size: 4.5rem;
+	font-size: 2.5rem;
 	line-height: 1;
 	text-transform: lowercase;
 	text-align: center;
+
+	@media (min-width: ${breakpoints.tabletPortrait}) {
+	  font-size: 4.5rem;
+	}
+`;
+
+const BubbleLine = styled.img`
+	max-width: 100%;	
 `;
 
 const Checkbox = styled.div`
 	text-align: center;
 	position: relative;
-	margin-top: -5rem;
+	margin-top: -1rem;
 	margin-bottom: 2rem;
 	text-transform: lowercase;
 	font-size: 1.25rem;
 	line-height: 1;
+
+	@media (min-width: ${breakpoints.tabletPortrait}) {
+	  margin-top: -5rem;
+	}
 
 	input[type="checkbox"] {
 		opacity: 0;
@@ -114,6 +132,11 @@ const Bird = styled.img`
   position: absolute;
   bottom: 0;
   left: 0;
+  display: none;
+
+  @media (min-width: ${breakpoints.tabletPortrait}) {
+    display: block;
+  }
 `;
 
 const Counter = styled.p`
@@ -190,6 +213,7 @@ const RestartButton = styled.button`
 `;
 
 const Image = styled.img`
+	max-width: 100%;
 `;
 
 const Notice = styled.p`
@@ -217,6 +241,11 @@ const Nope = styled.div`
 
 const Newman = styled.img`
 	margin-bottom: 2rem;
+	max-width: 100%;
+	
+	@media (min-width: ${breakpoints.tabletPortrait}) {
+	  display: block;
+	}
 `;
 
 class Form extends Component {
@@ -358,7 +387,7 @@ class Form extends Component {
 							autoFocus={true}
 							maxLength={40} />
 						<Counter className={value.length <= 20 ? 'ok' : 'warn'}>{value.length} / 40</Counter>
-						<img src="/bubble-line.png" />
+						<BubbleLine src="/bubble-line.png" />
 						<Bird src="/bird-bottom.png" />
 						<Checkbox>
 							<input
