@@ -1,4 +1,4 @@
-import NextLink as Link from 'next/Link';
+import { NextLink as Link } from 'next/Link';
 import styled from 'styled-components';
 import { breakpoints } from '../styles/tokens';
 
