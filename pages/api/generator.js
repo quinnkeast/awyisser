@@ -3,8 +3,6 @@ import { registerFont, createCanvas, Image } from "canvas";
 import path from "path";
 import fs from "fs";
 
-registerFont(path.resolve('pages/api/KateBeatonScript-Regular.ttf'), { family: 'KateBeatonScript' });
-
 const images = {
 	sfw: {
 		oneLine: 'aw-yiss-1-line-sfw.png',
@@ -65,6 +63,10 @@ export default async function(req, res) {
 			const value = req.body.value;
 			const sfw = req.body.sfw ? 'sfw' : 'nsfw';
 	
+			const fontFileName = 'KateBeatonScript';
+			const fontFilePath = path.resolve(`pages/api/${fontFileName}.ttf`);
+			registerFont(fontFilePath, { family: `${fontFileName}` });
+			
 			const canvas = createCanvas(600, 411);
 			const ctx = canvas.getContext('2d');
 			const maxWidth = 190;
@@ -75,7 +77,7 @@ export default async function(req, res) {
 			ctx.font = '28px KateBeatonScript';
 			ctx.fillStyle = "#2d2a2c";
 			ctx.textAlign = "center";
-	
+				
 			// Break up text input into individual lines
 			const lines = getLines(ctx, value, maxWidth);
 	
