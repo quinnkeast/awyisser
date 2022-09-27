@@ -1,7 +1,6 @@
 import { registerFont, createCanvas, Image } from "canvas";
 import path from "path";
 import fs from "fs";
-import string from "string-sanitizer";
 
 const images = {
 	sfw: {
@@ -60,7 +59,7 @@ export default async function(req, res) {
 				return res.status(400).end();
 			}
 	
-			const value = string.sanitize(req.body.value);
+			const value = req.body.value;
 			const sfw = req.body.sfw ? 'sfw' : 'nsfw';
 	
 			const fontFileName = 'KateBeatonScript';
