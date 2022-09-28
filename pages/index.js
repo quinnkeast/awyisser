@@ -21,6 +21,13 @@ export default function Home() {
         <title>awyisser | aw yiss comic generator</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Totally suck at putting your feelings into words? Use this generator to share your fervour with an aw yiss comic!" />
+        <meta property="og:title" content="aw yiss generator" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="awyisser" />
+        <meta property="og:url" content="https://www.awyisser.com" />
+        <meta property="og:description" content="Totally suck at putting your feelings into words? Share your fervour with an aw yiss comic!" />
+        <meta property="og:image" content="https://awyisser.com/assets/images/thumbnail.png" />
       </Head>
 
       <Main>

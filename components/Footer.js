@@ -21,8 +21,8 @@ const FooterContainer = styled.footer`
 
 const Footer = () => (
 	<FooterContainer>
-		<p>Made by <a href="https://twitter.com/quinnkeast" target="_blank">@quinnkeast</a> because it didn't exist while watching Mean Girls the other night</p>
-		<p>With love and admiration for Kate Beaton's <a href="http://www.harkavagrant.com/">"Hark! A Vagrant"</a></p>
+		<p>Made by <a href="https://quinnkeast.com" target="_blank">@quinnkeast</a> because it didn't exist while watching Mean Girls the other night</p>
+		<p>With love and admiration for Kate Beaton's <a href="http://www.harkavagrant.com/" target="_blank">"Hark! A Vagrant"</a></p>
 	</FooterContainer>
 );
 
