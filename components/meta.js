@@ -1,13 +1,14 @@
 import Head from "next/head";
+import Script from "next/script";
 
 export default function Meta() {
   return (
     <Head>
-      <script
+      <Script
         src="https://rudolph-luminous.awyisser.com/script.js"
         site={process.env.FATHOM}
         defer
-      ></script>
+      ></Script>
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <title>awyisser | aw yiss comic generator</title>
       <meta
