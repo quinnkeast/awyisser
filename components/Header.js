@@ -41,7 +41,7 @@ const Lead = styled.h2`
 const Header = () => (
 	<HeaderContainer>
 		<Logo>Awyisser</Logo>
-		<Lead>Create your very own, extra special "aw yiss" comic</Lead>
+		<Lead>Create your very own extra special "aw yiss" comic</Lead>
 	</HeaderContainer>
 );
 
