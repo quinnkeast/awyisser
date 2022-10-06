@@ -1,10 +1,10 @@
+import { withRouter } from "next/router";
 import { Component } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import Filter from 'bad-words';
 import { badWords } from './badWords.json';
-import { breakpoints } from '../styles/tokens';
 
 const Container = styled.div`
 	display: flex;
@@ -18,11 +18,6 @@ const FormContainer = styled.form`
 	align-items: center;
 	max-width: 100%;
 	padding: 1.5rem 0;
-
-	@media (min-width: ${breakpoints.tabletPortrait}) {
-	  max-width: 870px;
-	  padding: 3rem 0;
-	}
 `;
 
 const TextInput = styled.input`
@@ -31,10 +26,6 @@ const TextInput = styled.input`
 	line-height: 1;
 	text-transform: lowercase;
 	text-align: center;
-
-	@media (min-width: ${breakpoints.tabletPortrait}) {
-	  font-size: 4.5rem;
-	}
 `;
 
 const BubbleLine = styled.img`
@@ -49,10 +40,6 @@ const Checkbox = styled.div`
 	text-transform: lowercase;
 	font-size: 1.25rem;
 	line-height: 1;
-
-	@media (min-width: ${breakpoints.tabletPortrait}) {
-	  margin-top: -5rem;
-	}
 
 	input[type="checkbox"] {
 		opacity: 0;
@@ -133,10 +120,6 @@ const Bird = styled.img`
   bottom: 0;
   left: 0;
   display: none;
-
-  @media (min-width: ${breakpoints.tabletPortrait}) {
-    display: block;
-  }
 `;
 
 const Counter = styled.p`
@@ -156,12 +139,6 @@ const SubmittingContainer = styled.div`
 	padding: 6.875rem 0;
 	display: flex;
 	justify-content: center;
-	align-items: center;
-`;
-
-const ResultContainer = styled.div`
-	display: flex;
-	flex-direction: column;
 	align-items: center;
 `;
 
@@ -212,10 +189,6 @@ const RestartButton = styled.button`
 	}
 `;
 
-const Image = styled.img`
-	max-width: 100%;
-`;
-
 const Notice = styled.p`
 	font-family: Arial, Helvetica, sans-serif;
 	color: #999;
@@ -242,10 +215,6 @@ const Nope = styled.div`
 const Newman = styled.img`
 	margin-bottom: 2rem;
 	max-width: 100%;
-	
-	@media (min-width: ${breakpoints.tabletPortrait}) {
-	  display: block;
-	}
 `;
 
 class Form extends Component {
@@ -320,8 +289,11 @@ class Form extends Component {
 				this.setState({
 					submitting: false,
 					submitted: true,
-					image: response.image,
 				});
+				this.props.router.push({
+					pathname: `/comic`,
+					query: {image: response.image},
+				}, '/comic'); // "as" argument
 			})
 			.catch(error => {
 				this.setState({
@@ -410,20 +382,9 @@ class Form extends Component {
 						<img src="/bird-loading.gif" />
 					</SubmittingContainer>
 				}
-				{submitted && 
-					<ResultContainer>
-						<Image src={image} id="image" />
-						<Notice>Copy and paste anywhere. Image is not saved.</Notice>
-						{/*<CopyButton onClick={this.handleCopyImage} className={copied ? 'copied' : ''} disabled={copied}>
-							{!copied && <><CopyIcon icon={faCopy} /> Copy image to share</>}
-							{copied && <><CopyIcon icon={faCheckCircle} /> Copied! Next, paste it anywhere</>}
-						</CopyButton>*/}
-						<RestartButton onClick={this.handleRestart}>Rad, let's make another one</RestartButton>
-					</ResultContainer>
-				}
 			</Container>
 		);
 	}
 }
 
-export default Form;
+export default withRouter(Form);
