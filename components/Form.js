@@ -261,7 +261,7 @@ class Form extends Component {
 		}
 
 		let filter = new Filter({ emptyList: true });
-		filter.addWords(...badWords);
+		filter.addWords(...badWordsList);
 
 		if (filter.isProfane(value)) {
 			this.setState({ profane: true });

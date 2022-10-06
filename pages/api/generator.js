@@ -1,8 +1,9 @@
-const { registerFont, createCanvas, Image } = require('canvas');
-const { path, resolve } = require('path');
-const http = require('http');
+import { registerFont, createCanvas, Image } from "canvas";
 
-registerFont(resolve('pages/api/KateBeatonScript-Regular.ttf'), { family: 'KateBeatonScript' });
+import path from "path";
+import fs from "fs";
+
+registerFont(path.resolve('pages/api/KateBeatonScript-Regular.ttf'), { family: 'KateBeatonScript' });
 
 const images = {
 	sfw: {
@@ -54,81 +55,66 @@ function getLines(ctx, text, maxWidth) {
 	return lines;
 }
 
-export default (req, res) => {
-	if (req.method === 'POST') {
-		if (!req.body.value) {
-			return res.status(400).end();
-		}
-
-		const value = req.body.value;
-		const sfw = req.body.sfw ? 'sfw' : 'nsfw';
-
-		const canvas = createCanvas(600, 411);
-		const ctx = canvas.getContext('2d');
-		const maxWidth = 190;
-
-		let baseImage;
-
-		// Draw text
-		ctx.font = '28px KateBeatonScript';
-		ctx.fillStyle = "#2d2a2c";
-		ctx.textAlign = "center";
-
-		// Break up text input into individual lines
-		const lines = getLines(ctx, value, maxWidth);
-
-		switch (true) {
-			case (lines.length === 1):
-				baseImage = images[sfw].oneLine;
-				break;
-			case (lines.length === 2):
-				baseImage = images[sfw].twoLines;
-				break;
-			case (lines.length === 3):
-				baseImage = images[sfw].threeLines;
-				break;
-			default:
+export default function(req, res) {
+	return new Promise((resolve, reject) => {
+		if (req.method === 'POST') {
+			if (!req.body.value) {
 				return res.status(400).end();
-				break;
-		}
-
-		// Fetch the base image
-		const url = `${process.env.VERCEL_URL || 'http://localhost:3000'}/${baseImage}`;
-		http.get(url)
-			.on('response', (response) => {
-				const { statusCode } = response;
-
-				if (statusCode !== 200) {
-					console.log('3');
+			}
+	
+			const value = req.body.value;
+			const sfw = req.body.sfw ? 'sfw' : 'nsfw';
+	
+			const canvas = createCanvas(600, 411);
+			const ctx = canvas.getContext('2d');
+			const maxWidth = 190;
+	
+			let baseImage;
+	
+			// Draw text
+			ctx.font = '28px KateBeatonScript';
+			ctx.fillStyle = "#2d2a2c";
+			ctx.textAlign = "center";
+	
+			// Break up text input into individual lines
+			const lines = getLines(ctx, value, maxWidth);
+	
+			switch (true) {
+				case (lines.length === 1):
+					baseImage = images[sfw].oneLine;
+					break;
+				case (lines.length === 2):
+					baseImage = images[sfw].twoLines;
+					break;
+				case (lines.length === 3):
+					baseImage = images[sfw].threeLines;
+					break;
+				default:
 					return res.status(400).end();
+					break;
+			}
+	
+			// Fetch the base image
+			const dirRelativeToPublicFolder = 'images';
+			const dir = path.resolve('./public', dirRelativeToPublicFolder);
+			
+			fs.readFile(`${dir}/${baseImage}`, function(err, data) {
+				if (err) return res.status(500).end();
+				let img = new Image();
+				img.src = data;
+				// Place base image on canvas
+				ctx.drawImage(img, 0, 0);
+				
+				// Draw each line
+				for (let i = 0; i < lines.length; i++) {
+					ctx.fillText(lines[i], offset[i].x, offset[i].y);
 				}
-
-				var chunks = [];
-
-				response.on('data', (data) => {
-					chunks.push(data);
-				})
-
-				response.on('end', () => {
-					let img = new Image();
-					img.src = Buffer.concat(chunks);
-
-					// Place base image on canvas
-					ctx.drawImage(img, 0, 0);
-					
-					// Draw each line
-					for (let i = 0; i < lines.length; i++) {
-						ctx.fillText(lines[i], offset[i].x, offset[i].y);
-					}
-
-					return res.status(200).json({ image: canvas.toDataURL() });
-				})
-			.on('error', (error) => {
-				console.log('6');
-				return res.status(400).json({ error: error }).end();
+				
+				return res.status(200).json({ image: canvas.toDataURL() });
 			});
-		});
-	} else {
-		return res.status(405).end();
-	}	
+		} else {
+			return res.status(405).end();
+			resolve();
+		}	
+	});
 }
