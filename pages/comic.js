@@ -37,8 +37,7 @@ function Comic(props) {
 	const router = useRouter();
 	
 	useEffect(() => {
-		// check if there's a comic
-
+		// Check if there's a comic to display
 		if (!props.router.query.image) {
 			router.push('/');
 		}
