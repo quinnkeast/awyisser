@@ -168,8 +168,8 @@ class Form extends Component {
 							<label htmlFor="sfwCheckbox">watch that potty mouth</label>
 						</div>
             <button className="bg-blue-600 text-white text-xl leading-none lowercase rounded px-3 py-1 cursor-pointer hover:bg-blue-400" type="submit" disabled={!value}>Make it so</button>
-						{profane && <div className="absolute t-0 r-0 b-0 l-0 bg-gray-800 flex flex-col justify-center items-center">
-							<img src="/nope.gif" className="mb-4 max-w-full" alt="Nuh uh uh from Jurassic Park" />
+						{profane && <div className="absolute top-0 right-0 bottom-0 left-0 bg-white/90 bg flex flex-col justify-center items-center">
+							<img src="/nope.gif" className="mb-6 max-w-full" alt="Nuh uh uh from Jurassic Park" />
 							<button className="bg-blue-600 text-white text-xl leading-none lowercase rounded px-3 py-1 cursor-pointer hover:bg-blue-400" onClick={this.handleRestart}>I'm sorry, I'll be nice</button>
 						</div>}
 					</form>
