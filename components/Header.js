@@ -1,7 +1,7 @@
 import Link from 'next/Link';
 
 const Header = () => (
-	<div className="container mx-auto px-4 xl:max-w-screen-xl mt-12 mb-8">
+  <div className="container mx-auto px-4 xl:max-w-screen-xl mt-12 mb-8">
 		<div className="flex flex-col items-center text-center">
 			<Link href="/">
 				<a className="hover:text-blue-600 hover:cursor-pointer">
