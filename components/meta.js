@@ -19,7 +19,11 @@ export default function Meta() {
       <meta property="og:title" content="Awyisser" key="title" />
       <meta property="og:url" content="https://awyisser.com/" key="url" />
       <meta property="og:type" content="website" key="type" />
-      <meta property="og:image" content="https://awyisser.com/thumbnail.png" key="image" />
+      <meta
+        property="og:image"
+        content="https://awyisser.com/thumbnail.png"
+        key="image"
+      />
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:site" content="https://awyisser.com" />
       <meta property="twitter:creator" content="@quinnkeast" />
