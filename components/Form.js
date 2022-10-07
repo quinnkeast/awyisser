@@ -1,221 +1,8 @@
 import { withRouter } from "next/router";
 import { Component } from 'react';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import classNames from "classnames";
 import Filter from 'bad-words';
 import badWords from './badWords.json';
-
-const Container = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-`;
-
-const FormContainer = styled.form`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	max-width: 100%;
-	padding: 1.5rem 0;
-`;
-
-const TextInput = styled.input`
-	border: none;
-	font-size: 2.5rem;
-	line-height: 1;
-	text-transform: lowercase;
-	text-align: center;
-`;
-
-const BubbleLine = styled.img`
-	max-width: 100%;	
-`;
-
-const Checkbox = styled.div`
-	text-align: center;
-	position: relative;
-	margin-top: -1rem;
-	margin-bottom: 2rem;
-	text-transform: lowercase;
-	font-size: 1.25rem;
-	line-height: 1;
-
-	input[type="checkbox"] {
-		opacity: 0;
-	}
-
-	input[type="checkbox"] + label::after {
-		content: none;
-	}
-
-	input[type="checkbox"]:checked + label::after {
-		content: "";
-	}
-
-	input[type="checkbox"]:focus + label::before {
-		outline: rgb(59, 153, 252) auto 5px;
-	}
-
-	input[type="checkbox"]:checked + label::before {
-		border-color: #6772e5;
-	}
-
-	label {
-		position: relative;
-
-		&::before,
-		&::after {
-			position: absolute;
-		}
-
-		&::before {
-			content: "";
-			display: inline-block;
-			height: 18px;
-			width: 18px;
-			border: 2px solid #777;
-			top: -1px;
-			left: -29px;
-			border-radius: 6px;
-		}
-
-		&::after {
-			content: "";
-			display: inline-block;
-			height: 5px;
-			width: 10px;
-			border-left: 2px solid #6772e5;
-			border-bottom: 2px solid #6772e5;
-			transform: rotate(-45deg);
-			left: -24px;
-			top: 5px;
-		}
-	}
-`;
-
-const SubmitButton = styled.input`
-	background-color: #6772e5;
-	color: #fff;
-	font-size: 1.25rem;
-	line-height: 1;
-	text-transform: lowercase;
-	border-radius: 6px;
-	border: none;
-	padding: .5rem 1rem;
-	transition: all 50ms ease;
-	
-	&:disabled {
-		opacity: .5;
-	}
-
-	&:hover {
-		background-color: #7795f8;
-		cursor: pointer;
-	}
-`;
-
-const Bird = styled.img`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  display: none;
-`;
-
-const Counter = styled.p`
-	font-size: 1.25rem;
-	margin: .5rem 0 0 0;
-	
-	&.ok {
-		color: green;
-	}
-
-	&.warn {
-		color: red;
-	}
-`;
-
-const SubmittingContainer = styled.div`
-	padding: 6.875rem 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
-
-const CopyButton = styled.button`
-	background: transparent;
-	border: 2px solid transparent;
-	font-size: .9rem;
-	line-height: 1;
-	border-radius: 6px;
-	padding: .5rem 1rem;
-	transition: all 50ms ease;
-	margin: 1rem 0 3rem;
-	font-family: arial;
-	display: flex;
-	align-content: center;
-	color: #6772e5;
-
-	&:hover {
-		background-color: #eee;
-		cursor: pointer;
-	}
-
-	&.copied {
-		color: green;
-	}
-`;
-
-const CopyIcon = styled(FontAwesomeIcon)`
-	height: 16px;
-	margin-right: .25rem;
-`;
-
-const RestartButton = styled.button`
-	background-color: #6772e5;
-	color: #fff;
-	font-size: 1rem;
-	line-height: 1;
-	text-transform: lowercase;
-	border-radius: 6px;
-	border: none;
-	padding: .5rem 1rem;
-	transition: all 50ms ease;
-	font-weight: 400;
-
-	&:hover {
-		background-color: #7795f8;
-		cursor: pointer;
-	}
-`;
-
-const Notice = styled.p`
-	font-family: Arial, Helvetica, sans-serif;
-	color: #999;
-	font-size: .7rem;
-	line-height: 1.25;
-	text-align: center;
-	margin: 0 0 1.5rem;
-	letter-spacing: .125px;
-`;
-
-const Nope = styled.div`
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(255, 255, 255, .9);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-`;
-
-const Newman = styled.img`
-	margin-bottom: 2rem;
-	max-width: 100%;
-`;
 
 class Form extends Component {
 	constructor(props) {
@@ -236,7 +23,6 @@ class Form extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleRestart = this.handleRestart.bind(this);
 		this.handleErrors = this.handleErrors.bind(this);
-		this.handleCopyImage = this.handleCopyImage.bind(this);
 	}
 
 	handleChange(event) {
@@ -260,7 +46,7 @@ class Form extends Component {
 			return;
 		}
 
-		let filter = new Filter({ emptyList: true });
+		let filter = new Filter();
 		filter.addWords(...badWords);
 
 		if (filter.isProfane(value)) {
@@ -285,7 +71,14 @@ class Form extends Component {
 		})
 			.then(this.handleErrors)
 			.then(res => res.json())
-			.then(response => {
+      // Add a minimal delay so that it's a graceful load
+      .then(response => new Promise(resolve => {
+          setTimeout(() => {
+            resolve(response);
+          }, 2400);
+        })
+      )
+      .then(response => {
 				this.setState({
 					submitting: false,
 					submitted: true,
@@ -320,18 +113,14 @@ class Form extends Component {
 
 	handleErrors(response) {
 		if (!response.ok) {
-			throw Error(response.statusText);
 			this.setState({
 				submitting: false,
 				submitted: false,
 				error: response.error
 			});
+      throw Error(response.statusText);
 		}
 		return response;
-	}
-
-	handleCopyImage() {
-		this.setState({ copied: true });
 	}
 
 	render() {
@@ -341,48 +130,56 @@ class Form extends Component {
 			error,
 			value,
 			sfw,
-			copied,
-			image,
 			profane
 		} = this.state;
 
+    const counterStyle = classNames({
+      'text-green-600': value.length <= 20,
+      'text-orange-600': value.length > 20,
+      'text-red-600': value.length > 32,
+      'text-md': true,
+      'mt-2': true,
+    });
+
 		return (
-			<Container>
+			<div className="container flex flex-col items-center">
 				{(!submitted && !submitting) &&
-					<FormContainer onSubmit={this.handleSubmit}>
-						<TextInput
+					<form className="flex flex-col items-center max-w-full my-6" onSubmit={this.handleSubmit}>
+						<input
 							name="value"
 							type="text"
+							className="b-0 text-6xl leading-none lowercase text-center"
 							value={value}
 							placeholder="Aw yiss..."
 							onChange={this.handleChange}
 							autoFocus={true}
 							maxLength={40} />
-						<Counter className={value.length <= 20 ? 'ok' : 'warn'}>{value.length} / 40</Counter>
-						<BubbleLine src="/bubble-line.png" />
-						<Bird src="/bird-bottom.png" />
-						<Checkbox>
+						<p className={counterStyle}>{value.length} / 40</p>
+						<img src="/bubble-line.png" className="max-w-full" alt="Speech bubble underline" />
+						<img src="/bird-bottom.png" className="absolute b-0 l-0 hidden" alt="" />
+						<div className="text-center relative -mt-2 mb-4 lowercase text-md leading-none">
 							<input
 								name="sfw"
 								type="checkbox"
 								checked={sfw}
 								id="sfwCheckbox"
+                className="mr-2 inline-block"
 								onChange={this.handleChange} />
 							<label htmlFor="sfwCheckbox">watch that potty mouth</label>
-						</Checkbox>
-						<SubmitButton type="submit" value="Make it so" disabled={!value} />
-						{profane && <Nope>
-							<Newman src="/nope.gif" />
-							<RestartButton onClick={this.handleRestart}>I'm sorry, I'll be nice</RestartButton>
-						</Nope>}
-					</FormContainer>
+						</div>
+            <button className="bg-blue-600 text-white text-xl leading-none lowercase rounded px-3 py-1 cursor-pointer hover:bg-blue-400" type="submit" disabled={!value}>Make it so</button>
+						{profane && <div className="absolute t-0 r-0 b-0 l-0 bg-gray-800 flex flex-col justify-center items-center">
+							<img src="/nope.gif" className="mb-4 max-w-full" alt="Nuh uh uh from Jurassic Park" />
+							<button className="bg-blue-600 text-white text-xl leading-none lowercase rounded px-3 py-1 cursor-pointer hover:bg-blue-400" onClick={this.handleRestart}>I'm sorry, I'll be nice</button>
+						</div>}
+					</form>
 				}
 				{submitting &&
-					<SubmittingContainer>
-						<img src="/bird-loading.gif" />
-					</SubmittingContainer>
+					<div className="py-32 flex justify-center items-center">
+						<img src="/bird-loading.gif" alt="Loading..." />
+					</div>
 				}
-			</Container>
+			</div>
 		);
 	}
 }

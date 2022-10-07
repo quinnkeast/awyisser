@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import Layout from '../components/Layout';
-import Form from '../components/Form';
+import Layout from '../components/layout';
+import Form from '../components/form';
 
 export default function Home() {
   return (
