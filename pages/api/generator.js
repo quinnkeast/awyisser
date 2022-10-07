@@ -59,7 +59,7 @@ export default async function(req, res) {
 				return res.status(400).end();
 			}
 	
-			const value = req.body.value;
+			const value = req.body.value.toLowerCase();
 			const sfw = req.body.sfw ? 'sfw' : 'nsfw';
 	
 			const fontFileName = 'KateBeatonScript';
