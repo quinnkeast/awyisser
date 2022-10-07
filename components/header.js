@@ -1,4 +1,4 @@
-import Link from 'next/Link';
+import Link from 'next/link';
 
 const Header = () => (
   <div className="container mx-auto px-4 xl:max-w-screen-xl mt-12 mb-8">

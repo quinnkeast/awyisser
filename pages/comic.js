@@ -1,5 +1,5 @@
 import { withRouter, useRouter } from "next/router";
-import Link from "next/Link";
+import Link from "next/link";
 import { useEffect } from "react";
 import Head from 'next/head';
 import Layout from '../components/layout';
