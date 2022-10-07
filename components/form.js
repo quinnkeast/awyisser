@@ -14,7 +14,7 @@ class Form extends Component {
       submitting: false,
       error: false,
       value: "",
-      sfw: true,
+      sfw: false,
       copied: false,
       image: "",
       profane: false,
@@ -182,7 +182,9 @@ class Form extends Component {
                 className="mr-2 inline-block"
                 onChange={this.handleChange}
               />
-              <label htmlFor="sfwCheckbox">watch that potty mouth</label>
+              <label htmlFor="sfwCheckbox">
+                use "mutha freakin" instead of "mutha fuckin"
+              </label>
             </div>
             <button
               className="bg-blue-600 text-white text-xl leading-none lowercase rounded px-3 py-1 cursor-pointer hover:bg-blue-400"
