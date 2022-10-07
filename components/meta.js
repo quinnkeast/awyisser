@@ -38,6 +38,7 @@ export default function Meta() {
         content="https://awyisser.com/thumbnail.png"
         key="twitter-image"
       />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
   );
