@@ -2,7 +2,7 @@ import Meta from "./meta";
 import Header from "./header";
 import Footer from "./footer";
 
-export default function Layout({ preview, children }) {
+export default function Layout({ children }) {
   return (
     <>
       <Meta />

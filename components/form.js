@@ -1,6 +1,7 @@
 import { withRouter } from "next/router";
 import { Component } from "react";
 import classNames from "classnames";
+import TextareaAutosize from "react-textarea-autosize";
 import Filter from "bad-words";
 import badWords from "./badWords.json";
 
@@ -20,6 +21,7 @@ class Form extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleUserKeyPress = this.handleUserKeyPress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRestart = this.handleRestart.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
@@ -33,6 +35,13 @@ class Form extends Component {
     this.setState({
       [name]: value,
     });
+  }
+
+  handleUserKeyPress(event) {
+    if (event.key === "Enter") {
+      //event.preventDefault();
+      this.handleSubmit(event);
+    }
   }
 
   handleSubmit(event) {
@@ -143,13 +152,13 @@ class Form extends Component {
             className="flex flex-col items-center max-w-full my-6"
             onSubmit={this.handleSubmit}
           >
-            <input
+            <TextareaAutosize
               name="value"
-              type="text"
-              className="b-0 text-6xl leading-none lowercase text-center"
+              className="b-0 text-4xl md:text-7xl leading-none lowercase text-center ring-0 resize-none focus:outline-0 active:outline-0"
               value={value}
               placeholder="Aw yiss..."
               onChange={this.handleChange}
+              onKeyPress={this.handleUserKeyPress}
               autoFocus={true}
               maxLength={40}
             />

@@ -20,7 +20,12 @@ function Comic(props) {
         <title>Aw yiss new comic | Awyisser</title>
       </Head>
       <div className="flex flex-col items-center">
-        <img src={props.router.query.image} id="image" className="max-w-full" />
+        <img
+          src={props.router.query.image}
+          id="image"
+          className="max-w-full"
+          alt="Brand new aw yiss comic"
+        />
         <p className="text-xs font-sans text-gray-500 mb-6">
           Copy and paste anywhere. Image is not saved.
         </p>

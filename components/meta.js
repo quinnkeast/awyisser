@@ -9,7 +9,6 @@ export default function Meta() {
         site={process.env.FATHOM}
         defer
       ></Script>
-      <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <title>awyisser | aw yiss comic generator</title>
       <meta
         property="og:description"
@@ -38,6 +37,7 @@ export default function Meta() {
         content="https://awyisser.com/thumbnail.png"
         key="twitter-image"
       />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
   );
