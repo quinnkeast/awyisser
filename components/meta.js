@@ -9,7 +9,6 @@ export default function Meta() {
         site={process.env.FATHOM}
         defer
       ></Script>
-      <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <title>awyisser | aw yiss comic generator</title>
       <meta
         property="og:description"

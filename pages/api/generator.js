@@ -38,9 +38,9 @@ function getLines(ctx, text, maxWidth) {
   let lines = [];
   let currentLine = words[0];
 
-  for (var i = 1; i < words.length; i++) {
+  for (let i = 1; i < words.length; i++) {
     let word = words[i];
-    var width = ctx.measureText(currentLine + " " + word).width;
+    let width = ctx.measureText(currentLine + " " + word).width;
     if (width < maxWidth) {
       currentLine += " " + word;
     } else {
@@ -53,10 +53,11 @@ function getLines(ctx, text, maxWidth) {
 }
 
 export default async function (req, res) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     if (req.method === "POST") {
       if (!req.body.value) {
-        return res.status(400).end();
+        res.status(400).end();
+        return resolve();
       }
 
       const value = req.body.value.toLowerCase();
@@ -92,7 +93,6 @@ export default async function (req, res) {
           break;
         default:
           return res.status(400).end();
-          break;
       }
 
       // Fetch the base image
@@ -111,11 +111,12 @@ export default async function (req, res) {
           ctx.fillText(lines[i], offset[i].x, offset[i].y);
         }
 
-        return res.status(200).json({ image: canvas.toDataURL() });
+        res.status(200).json({ image: canvas.toDataURL() });
+        return resolve();
       });
     } else {
-      return res.status(405).end();
-      resolve();
+      res.status(405).end();
+      return resolve();
     }
   });
 }
