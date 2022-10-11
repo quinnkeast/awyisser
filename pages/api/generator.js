@@ -52,10 +52,10 @@ function getLines(ctx, text, maxWidth) {
   return lines;
 }
 
-export default async function (req, res) {
+export default async function generator(req, res) {
   return new Promise((resolve) => {
     if (req.method === "POST") {
-      if (!req.body.value) {
+      if (!req.body.value || req.body.value.length > 40) {
         res.status(400).end();
         return resolve();
       }
