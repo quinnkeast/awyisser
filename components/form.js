@@ -154,9 +154,11 @@ class Form extends Component {
           >
             <TextareaAutosize
               name="value"
+              id="awyiss-input"
               className="b-0 text-4xl md:text-7xl leading-none lowercase text-center ring-0 resize-none focus:outline-0 active:outline-0"
               value={value}
               placeholder="Aw yiss..."
+              aria-label="awyiss-input"
               onChange={this.handleChange}
               onKeyPress={this.handleUserKeyPress}
               autoFocus={true}
