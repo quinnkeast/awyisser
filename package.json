@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest ",
+    "test:unit": "jest",
+    "test:e2e": "playwright test",
     "vercel-build": "yum install libuuid-devel libmount-devel && cp /lib64/{libuuid,libmount,libblkid}.so.1 node_modules/canvas/build/Release/ && next build"
   },
   "jest": {
@@ -25,6 +26,7 @@
     "react-textarea-autosize": "^8.3.4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.27.1",
     "@types/jest": "^29.1.2",
     "autoprefixer": "^10.4.12",
     "babel-jest": "^29.1.2",
