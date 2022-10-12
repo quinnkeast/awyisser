@@ -29,7 +29,7 @@ curl https://www.awyisser.com/api/generator \
 **Request body**
 - `value` (required): A string between 1-40 characters. Not all characters 
   are supported. Prefer alphanumeric and basic punctuation.
-- `sfw` (optional): Set to true to return ”mutha freakin” instead of ”mutha fucking”
+- `sfw` (optional): Set to true to return ”mutha freakin” instead of ”mutha fuckin”
   depending on sensibilities. Defaults to false.
 
 **Success response**  
