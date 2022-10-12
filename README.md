@@ -31,7 +31,6 @@ curl https://www.awyisser.com/api/generator \
   are supported. Prefer alphanumeric and basic punctuation.
 - `sfw` (optional): Set to true to return ”mutha freakin” instead of ”mutha fucking”
   depending on sensibilities. Defaults to false.
-}
 
 **Success response**  
 - Code: 200  
