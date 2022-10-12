@@ -1,30 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
+# Awyisser
 
-## Getting Started
+![Aw yiss aw yiss comic generator](awyiss-readme-image.png)
 
-First, run the development server:
+[Awyisser](https://awyisser.com) is a simple ”[aw yiss](https://knowyourmeme.com/memes/aww-yiss)” comic generator built 
+with [Next.js](https://nextjs.org/). 
+
+## Generate a comic
+
+### Via the web
+
+Visit [awyisser.com](https://awyisser.com) if all you want to do is generate 
+a comic and copy/paste/save it to use elsewhere.
+
+### Via the API
+
+[awyisser.com](https://awyisser.com) exposes a public API that can be used
+to generate new comics. I make no promises to the long-term stability and 
+availability of this API.
+
+```curl
+curl https://www.awyisser.com/api/generator \
+    -X POST \
+    -H "Content-Type: application/json" \
+    -d {"value": "aw yiss comic generator"}
+}
+```
+
+**Request body**
+- `value` (required): A string between 1-40 characters. Not all characters 
+  are supported. Prefer alphanumeric and basic punctuation.
+- `sfw` (optional): Set to true to return ”mutha freakin” instead of ”mutha fucking”
+  depending on sensibilities. Defaults to false.
+}
+
+**Success response**  
+- Code: 200  
+- Content: `{ image: string }`  
+  Image is returned as a base64 encoded png data string.
+
+## Muck around yourself
+
+Clone this repo and run `npm install`. Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/zeit/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on ZEIT Now
-
-The easiest way to deploy your Next.js app is to use the [ZEIT Now Platform](https://zeit.co/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
