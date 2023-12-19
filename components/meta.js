@@ -5,7 +5,7 @@ export default function Meta() {
   return (
     <Head>
       <Script
-        src="https://rudolph-luminous.awyisser.com/script.js"
+        src="https://cdn.usefathom.com/script.js"
         site={process.env.FATHOM}
         defer
       ></Script>
