@@ -1,14 +1,14 @@
 import Head from "next/head";
-import Script from "next/script";
+//import Script from "next/script";
 
 export default function Meta() {
   return (
     <Head>
-      <Script
+      <script
         src="https://cdn.usefathom.com/script.js"
         site={process.env.FATHOM}
         defer
-      ></Script>
+      ></script>
       <title>awyisser | aw yiss comic generator</title>
       <meta
         property="og:description"
