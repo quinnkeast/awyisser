@@ -27,7 +27,7 @@ function Comic(props) {
           alt="Brand new aw yiss comic"
         />
         <p className="text-xs font-sans text-gray-500 mb-6">
-          Copy and paste anywhere. Image is not saved.
+          Copy and paste anywhere (Image is not saved)
         </p>
         <Link href="/">
           <button className="lowercase bg-blue-600 text-white px-4 py-1 border-1 rounded hover:bg-blue-500 focus:outline-4 focus:outline-offset-2">
