@@ -6,12 +6,12 @@ const Header = () => (
       <Link href="/">
         <a className="hover:text-blue-600 hover:cursor-pointer">
           <h1 className="text-4xl md:text-5xl leading-none margin-0 text-center mb-2 lowercase">
-            Awyisser
+            Awyisserrrr
           </h1>
         </a>
       </Link>
       <h2 className="text-lg lowercase leading-none">
-        Create your very own, extra special "aw yiss" comic
+        Create your very own, extra special "aw yisssss" comic!
       </h2>
     </div>
   </div>
