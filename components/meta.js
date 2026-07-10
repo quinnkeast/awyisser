@@ -15,7 +15,7 @@ export default function Meta() {
         content="Make your very own bespoke extra special aw yiss comic."
         key="description"
       />
-      <meta property="og:title" content="Awyisser" key="title" />
+      <meta property="og:title" content="Awyisser!" key="title" />
       <meta property="og:url" content="https://awyisser.com/" key="url" />
       <meta property="og:type" content="website" key="type" />
       <meta
