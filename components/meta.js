@@ -12,7 +12,7 @@ export default function Meta() {
       <title>awyisser | aw yiss comic generator</title>
       <meta
         property="og:description"
-        content="Make your very own bespoke extra special aw yiss comic."
+        content="Make your very own bespoke extra special aw yiss comic!"
         key="description"
       />
       <meta property="og:title" content="Awyisser" key="title" />
@@ -29,7 +29,7 @@ export default function Meta() {
       <meta property="twitter:title" content="Awyisser" key="twitter-title" />
       <meta
         property="twitter:description"
-        content="Make your very own bespoke extra special aw yiss comic."
+        content="Make your very own bespoke extra special aw yiss comic!"
         key="twitter-description"
       />
       <meta

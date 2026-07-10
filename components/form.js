@@ -185,7 +185,7 @@ class Form extends Component {
                 onChange={this.handleChange}
               />
               <label htmlFor="sfwCheckbox">
-                use "mutha freakin" instead of "mutha fuckin"
+                use "muthafreakin" instead of "mutha fuckin"
               </label>
             </div>
             <button
@@ -193,7 +193,7 @@ class Form extends Component {
               type="submit"
               disabled={!value}
             >
-              Make it so
+              Make it so!
             </button>
             {profane && (
               <div className="absolute top-0 right-0 bottom-0 left-0 bg-white/90 bg flex flex-col justify-center items-center">
