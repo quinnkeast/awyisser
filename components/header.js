@@ -11,7 +11,7 @@ const Header = () => (
         </a>
       </Link>
       <h2 className="text-lg lowercase leading-none">
-        Create your very own, extra special "aw yiss this is new" comic
+        Create your very own, extra special "aw yiss this is edited" comic
       </h2>
     </div>
   </div>
