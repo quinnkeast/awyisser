@@ -199,7 +199,7 @@ test.describe('Editing', () => {
   test('should save edits on blur', async ({ page }) => {
     const todoItems = page.locator('.todo-list li');
     await todoItems.nth(1).dblclick();
-    await todoItems.nth(1).locator('.edit').fill('buy some sausages');
+    await todoItems.nth(1).locator('.edit').fill('buy some sausages!');
     await todoItems.nth(1).locator('.edit').dispatchEvent('blur');
 
     await expect(todoItems).toHaveText([
@@ -207,21 +207,21 @@ test.describe('Editing', () => {
       'buy some sausages',
       TODO_ITEMS[2],
     ]);
-    await checkTodosInLocalStorage(page, 'buy some sausages');
+    await checkTodosInLocalStorage(page, 'buy some sausages!');
   });
 
   test('should trim entered text', async ({ page }) => {
     const todoItems = page.locator('.todo-list li');
     await todoItems.nth(1).dblclick();
-    await todoItems.nth(1).locator('.edit').fill('    buy some sausages    ');
+    await todoItems.nth(1).locator('.edit').fill('buy some sausages!');
     await todoItems.nth(1).locator('.edit').press('Enter');
 
     await expect(todoItems).toHaveText([
       TODO_ITEMS[0],
-      'buy some sausages',
+      'buy some sausages!',
       TODO_ITEMS[2],
     ]);
-    await checkTodosInLocalStorage(page, 'buy some sausages');
+    await checkTodosInLocalStorage(page, 'buy some sausages!');
   });
 
   test('should remove the item if an empty text string was entered', async ({ page }) => {
@@ -239,7 +239,7 @@ test.describe('Editing', () => {
   test('should cancel edits on escape', async ({ page }) => {
     const todoItems = page.locator('.todo-list li');
     await todoItems.nth(1).dblclick();
-    await todoItems.nth(1).locator('.edit').fill('buy some sausages');
+    await todoItems.nth(1).locator('.edit').fill('buy some sausages!');
     await todoItems.nth(1).locator('.edit').press('Escape');
     await expect(todoItems).toHaveText(TODO_ITEMS);
   });
