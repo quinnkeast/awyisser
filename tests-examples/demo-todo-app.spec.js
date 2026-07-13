@@ -204,7 +204,7 @@ test.describe('Editing', () => {
 
     await expect(todoItems).toHaveText([
       TODO_ITEMS[0],
-      'buy some sausages',
+      'buy some sausages!',
       TODO_ITEMS[2],
     ]);
     await checkTodosInLocalStorage(page, 'buy some sausages!');
