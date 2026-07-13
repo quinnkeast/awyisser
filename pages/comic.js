@@ -24,7 +24,7 @@ function Comic(props) {
           src={props.router.query.image}
           id="image"
           className="max-w-full"
-          alt="Brand new aw yiss comic!"
+          alt="Brand new aw yiss comic!!!"
         />
         <p className="text-xs font-sans text-gray-500 mb-6">
           Copy and paste anywhere. Image is not saved.
