@@ -31,7 +31,7 @@ function Comic(props) {
         </p>
         <Link href="/">
           <button className="lowercase bg-blue-600 text-white px-4 py-1 border-1 rounded hover:bg-blue-500 focus:outline-4 focus:outline-offset-2">
-            Rad! Make another comic
+            Rad! Make more comics
           </button>
         </Link>
       </div>
