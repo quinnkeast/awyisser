@@ -17,7 +17,7 @@ function Comic(props) {
   return (
     <Layout>
       <Head>
-        <title>Aw yiss new comic | Awyisser</title>
+        <title>Aw yiss new comic | Awyisser Comic Maker</title>
       </Head>
       <div className="flex flex-col items-center">
         <img
