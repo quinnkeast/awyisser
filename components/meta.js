@@ -15,7 +15,7 @@ export default function Meta() {
         content="Make your very own bespoke extra special aw yiss comic."
         key="description"
       />
-      <meta property="og:title" content="Awyisser" key="title" />
+      <meta property="og:title" content="Awyisser!" key="title" />
       <meta property="og:url" content="https://awyisser.com/" key="url" />
       <meta property="og:type" content="website" key="type" />
       <meta
@@ -26,7 +26,7 @@ export default function Meta() {
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:site" content="https://awyisser.com" />
       <meta property="twitter:creator" content="@quinnkeast" />
-      <meta property="twitter:title" content="Awyisser" key="twitter-title" />
+      <meta property="twitter:title" content="Awyisser!" key="twitter-title" />
       <meta
         property="twitter:description"
         content="Make your very own bespoke extra special aw yiss comic."
