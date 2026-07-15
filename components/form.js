@@ -193,7 +193,7 @@ class Form extends Component {
               type="submit"
               disabled={!value}
             >
-              Make it so
+              Make it so!
             </button>
             {profane && (
               <div className="absolute top-0 right-0 bottom-0 left-0 bg-white/90 bg flex flex-col justify-center items-center">
@@ -206,7 +206,7 @@ class Form extends Component {
                   className="bg-blue-600 text-white text-xl leading-none lowercase rounded px-3 py-1 cursor-pointer hover:bg-blue-400"
                   onClick={this.handleRestart}
                 >
-                  I'm sorry, I'll be nice
+                  I'm sorry, I'll be nice!
                 </button>
               </div>
             )}
