@@ -19,7 +19,7 @@ const Footer = () => (
           className="text-blue-600 hover:text-blue-400"
           target="_blank"
         >
-          "Hark! A Vagrant"
+          Hark! A Vagrant!!
         </a>
       </p>
     </div>
