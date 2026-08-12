@@ -9,7 +9,7 @@ export default function Meta() {
         site={process.env.FATHOM}
         defer
       ></script>
-      <title>awyisser | aw yiss comic generator!</title>
+      <title>awyisser – aw yiss comic generator!</title>
       <meta
         property="og:description"
         content="Make your very own bespoke extra special aw yiss comic."
