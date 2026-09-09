@@ -185,7 +185,7 @@ class Form extends Component {
                 onChange={this.handleChange}
               />
               <label htmlFor="sfwCheckbox">
-                use "mutha freakin" instead of "mutha fuckin"
+                use "mutha freaking" instead of "mutha fuckin"
               </label>
             </div>
             <button
