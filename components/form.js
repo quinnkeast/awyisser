@@ -168,7 +168,7 @@ class Form extends Component {
             <img
               src="/bubble-line.png"
               className="max-w-full"
-              alt="Speech bubble underline"
+              alt="Speech bubble underline!"
             />
             <img
               src="/bird-bottom.png"
