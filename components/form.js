@@ -168,7 +168,7 @@ class Form extends Component {
             <img
               src="/bubble-line.png"
               className="max-w-full"
-              alt="Speech bubble underline"
+              alt="Speech bubble underline!"
             />
             <img
               src="/bird-bottom.png"
@@ -185,7 +185,7 @@ class Form extends Component {
                 onChange={this.handleChange}
               />
               <label htmlFor="sfwCheckbox">
-                use "mutha freakin" instead of "mutha fuckin"
+                use "mutha freaking" instead of "mutha fuckin"
               </label>
             </div>
             <button
